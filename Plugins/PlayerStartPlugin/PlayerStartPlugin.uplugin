@@ -1,0 +1,37 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+    "EngineVersion" : "4.27.0",
+	"FriendlyName": "PlayerStartPlugin",
+	"Description": "Easily setup, manage and activate PlayerStarts for your game via WorldSettings from within the Editor Outliner",
+	"Category": "Editor",
+	"CreatedBy": "Kim David Hauser",
+	"CreatedByURL": "http://kimhauser.ch",
+	"DocsURL": "http://kimhauser.ch/unrealengine/plugins/playerstartplugin",
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/ad230cf1db1b4d99bb211bcda2667c9b",
+	"SupportURL": "http://kimhauser.ch/unrealengine/plugins/playerstartplugin",
+    "EnabledByDefault" : true,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	    "Modules": [
+        {
+            "Name": "PlayerStartPlugin",
+            "Type": "Editor",
+            "LoadingPhase": "PostEngineInit",
+            "WhitelistPlatforms" : [
+                "Win64", "Win32", "Mac", "IOS", "Android"
+            ]
+        },
+        {
+            "Name": "PSWorldSettings",
+            "Type": "Editor",
+            "LoadingPhase": "Default",
+            "WhitelistPlatforms" : [
+                "Win64", "Win32", "Mac", "IOS", "Android"
+            ]
+        }
+    ]
+}
