@@ -46,7 +46,6 @@ void FPlayerStartCustomization::CustomizeDetails(IDetailLayoutBuilder& DetailBui
         FString FSItem = *item;
         if(FSItem.Equals(PlayerStartTagSetting, ESearchCase::CaseSensitive))
         {
-//            UE_LOG(LogTemp, Log, TEXT("PlayerStart Found and Selected: %s"), *PlayerStartTagSetting);
             CurrentPlayerStartSharedRef = item;
             break;
         }
@@ -88,7 +87,6 @@ void FPlayerStartCustomization::CustomizeDetails(IDetailLayoutBuilder& DetailBui
     
     if (GEngine)
     {
-//        UE_LOG(LogTemp, Log, TEXT("Setting up Actor-Delagates"));
         FDelegateHandle Handle = FEditorDelegates::OnNewActorsDropped.AddRaw(this, &FPlayerStartCustomization::OnNewActorsDropped);
         FDelegateHandle Handle2 = FEditorDelegates::OnDeleteActorsEnd.AddRaw(this, &FPlayerStartCustomization::OnDeleteActorsEnd);
     }
@@ -96,8 +94,6 @@ void FPlayerStartCustomization::CustomizeDetails(IDetailLayoutBuilder& DetailBui
 
 void FPlayerStartCustomization::OnNewActorsDropped(const TArray<UObject*>&, const TArray<AActor*>&)
 {
-//    GLog->Log("OnNewActorsDropped - CUSTOMIZATION!");
-    
     TSharedPtr<FString> SelPlayerStart = PlayerStartComboBox->GetSelectedItem();
     
     this->ReloadPlayerStarts();
@@ -107,8 +103,6 @@ void FPlayerStartCustomization::OnNewActorsDropped(const TArray<UObject*>&, cons
 
 void FPlayerStartCustomization::OnDeleteActorsEnd()
 {
-//    GLog->Log("OnDeleteActorsEnd - CUSTOMIZATION!");
-    
     TSharedPtr<FString> SelPlayerStart = PlayerStartComboBox->GetSelectedItem();
 
     this->ReloadPlayerStarts();
