@@ -129,7 +129,6 @@ void FPlayerStartCustomization::ComboBoxSetToWorldProperty(TSharedPtr<FString> S
         DefaultItem = item;
         if(FSItem.Equals(*SelPlayerStart, ESearchCase::CaseSensitive))
         {
-//            UE_LOG(LogTemp, Log, TEXT("PlayerStart Found and Selected: %s - ADD"), *PlayerStartTagSetting);
             PlayerStartComboBox->SetSelectedItem(item);
             return;
         }
@@ -142,8 +141,6 @@ void FPlayerStartCustomization::ComboBoxSetToWorldProperty(TSharedPtr<FString> S
 
 void FPlayerStartCustomization::ReloadPlayerStarts()
 {
-//    GLog->Log("Reload PlayerStarts!");
-    
     if(UWorld* World = GEditor->GetEditorWorldContext().World())
     {
         ComboBoxOptions.Empty();
@@ -156,7 +153,6 @@ void FPlayerStartCustomization::ReloadPlayerStarts()
             APlayerStart* PlayerStartCast = Cast<APlayerStart>(PlayerStartActor);
             if (PlayerStartCast)
             {
-//                UE_LOG(LogTemp, Log, TEXT("PlayerStart Found %s"), *PlayerStartCast->GetActorLabel());
                 ComboBoxOptions.Add(MakeShared<FString>(FString(PlayerStartCast->GetActorLabel())));
             }
         }
@@ -169,8 +165,6 @@ void FPlayerStartCustomization::ReloadPlayerStarts()
 
 FReply FPlayerStartCustomization::ClickedOnButton()
 {
-//    GLog->Log("ViewPortCamera goto actor!");
-
     if (GEditor)
     {
         if(UWorld* World = GEditor->GetEditorWorldContext().World())
@@ -183,7 +177,6 @@ FReply FPlayerStartCustomization::ClickedOnButton()
                 APlayerStart* PlayerStartCast = Cast<APlayerStart>(PlayerStartActor);
                 if (PlayerStartCast)
                 {
-//                    UE_LOG(LogTemp, Log, TEXT("PlayerStart Found %s"), *PlayerStartCast->GetActorLabel());
                     TSharedPtr<FString> PlayerStartSharedRef = MakeShared<FString>(FString(PlayerStartCast->GetActorLabel()));
                     
                     FString PlayerStartTagSetting;

@@ -16,11 +16,8 @@ AActor* APlayerStartGameModeBase::ChoosePlayerStart_Implementation(AController* 
         if(World)
         {
             APSWorldSettingsBase* PlayerStartWorldSettings = Cast<APSWorldSettingsBase>(World->GetWorldSettings());
-            
             if(PlayerStartWorldSettings)
             {
-//                GLog->Log("ChoosePlayerStart_Implementation!");
-
                 TArray<AActor*> ActorsToFind;
                 UGameplayStatics::GetAllActorsOfClass(World, APlayerStart::StaticClass(), ActorsToFind);
                 
@@ -29,15 +26,11 @@ AActor* APlayerStartGameModeBase::ChoosePlayerStart_Implementation(AController* 
                     APlayerStart* PlayerStartCast = Cast<APlayerStart>(PlayerStartActor);
                     if (PlayerStartCast)
                     {
-//                        UE_LOG(LogTemp, Log, TEXT("PlayerStart Found %s"), *PlayerStartCast->GetActorLabel());
-                        
                         TSharedPtr<FString> PlayerStartSharedRef = MakeShared<FString>(FString(PlayerStartCast->GetActorLabel()));
                         
                         FString PlayerStartTagSetting = PlayerStartWorldSettings->DefaultPlayerStartTag;
-                        
                         if(PlayerStartTagSetting.Equals(FString(PlayerStartCast->GetActorLabel())))
                         {
-//                            UE_LOG(LogTemp, Log, TEXT("ChoosePlayerStart_Implementation => PlayerStart Found %s"), *PlayerStartCast->GetActorLabel());
                             return PlayerStartCast;
                         }
                     }
