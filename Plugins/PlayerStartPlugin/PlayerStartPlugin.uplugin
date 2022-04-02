@@ -22,7 +22,7 @@
             "Type": "Editor",
             "LoadingPhase": "PostEngineInit",
             "WhitelistPlatforms" : [
-                "Win64", "Win32", "Mac", "IOS", "Android"
+                "Mac"
             ]
         },
         {
@@ -30,7 +30,7 @@
             "Type": "Editor",
             "LoadingPhase": "Default",
             "WhitelistPlatforms" : [
-                "Win64", "Win32", "Mac", "IOS", "Android"
+                "Mac"
             ]
         }
     ]
