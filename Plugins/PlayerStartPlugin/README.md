@@ -17,7 +17,7 @@ This module contains all the Editor customization needed for selecting and using
 4. Restart Project / UE4 Editor (Important!)
 5. Set PlayerStartGameModeBase as GameMode-Override in the WorldSettings or create your own GameMode with PlayerStartGameModeBase as a parent and use this class as GameMode Override in WorldSettings.
 6. Place PlayerStarts on the map
-7. Remove the PlayerCharacters from the Map to activate the placed PlayerStarts as SpawnPoints
+7. Remove the own PlayerCharacter from the Map to activate the placed PlayerStarts as SpawnPoints
 8. Set the current/preferred PlayerStart in the WorldSettings in the Editor Outliner
 9. Start the Game and test the setup PlayerStart
 
