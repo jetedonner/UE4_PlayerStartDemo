@@ -15,9 +15,28 @@
 #include "Widgets/Text/STextBlock.h"
 #include "Widgets/Input/SButton.h"
 #include "Widgets/SBoxPanel.h"
+#include "Widgets/Layout/SBox.h"
+#include "Components/Button.h"
 #include "Internationalization/Text.h"
+#include "PropertyCustomizationHelpers.h"
+#include "Delegates/Delegate.h"
+#include "LocTextHelper.h"
+#include "Delegates/DelegateSignatureImpl.inl"
 #include "UObject/Class.h"
  
+//SLATE_BEGIN_ARGS( SPropertyEditorButton )
+//    : _Text( )
+//    , _Image( FEditorStyle::GetBrush("Default") )
+//    , _IsFocusable( true )
+//{}
+//    SLATE_ARGUMENT( FText, Text )
+//    SLATE_ARGUMENT( const FSlateBrush*, Image )
+//    SLATE_EVENT( FSimpleDelegate, OnClickAction )
+//
+//    /** Sometimes a button should only be mouse-clickable and never keyboard focusable. */
+//    SLATE_ARGUMENT( bool, IsFocusable )
+//SLATE_END_ARGS()
+
 TSharedRef<IDetailCustomization> FPlayerStartCustomization::MakeInstance()
 {
     return MakeShareable(new FPlayerStartCustomization);
@@ -51,6 +70,10 @@ void FPlayerStartCustomization::CustomizeDetails(IDetailLayoutBuilder& DetailBui
         }
     }
     
+    TSharedRef<SWidget> BrowseButton = PropertyCustomizationHelpers::MakeBrowseButton(FSimpleDelegate::CreateSP(this, &FPlayerStartCustomization::ClickedOnButtonNG), FText::FromString("Navigate to this PlayerStart in Viewport"));
+    TSharedRef<SButton> BrowseButtonAsButton = StaticCastSharedRef<SButton>(BrowseButton);
+    BrowseButtonAsButton->SetForegroundColor(FLinearColor(1.0f, 1.0f, 1.0f, 1.0f));
+    
     CustomCategory.AddCustomRow(FText::FromString("PlayerStart"))
         .NameContent()
         [
@@ -61,16 +84,55 @@ void FPlayerStartCustomization::CustomizeDetails(IDetailLayoutBuilder& DetailBui
         .VAlign(VAlign_Center)
         .MaxDesiredWidth(250)
         [
-            SAssignNew(PlayerStartComboBox, STextComboBox)
+            /*SAssignNew(PlayerStartComboBox, STextComboBox)
             .Font(IDetailLayoutBuilder::GetDetailFont())
             .OptionsSource(&ComboBoxOptions)
             .InitiallySelectedItem(CurrentPlayerStartSharedRef)
-            .OnSelectionChanged(this, &FPlayerStartCustomization::OnPlayerStartChanged)
+            .OnSelectionChanged(this, &FPlayerStartCustomization::OnPlayerStartChanged)*/
+         SNew(SHorizontalBox)
+         +SHorizontalBox::Slot()
+         .AutoWidth()
+         .VAlign(VAlign_Center)
+         .Padding(0, 0, 4, 0)
+         [
+              SAssignNew(PlayerStartComboBox, STextComboBox)
+              .Font(IDetailLayoutBuilder::GetDetailFont())
+              .OptionsSource(&ComboBoxOptions)
+              .InitiallySelectedItem(CurrentPlayerStartSharedRef)
+              .OnSelectionChanged(this, &FPlayerStartCustomization::OnPlayerStartChanged)
+         ]
+         + SHorizontalBox::Slot()
+         .AutoWidth()
+         .VAlign(VAlign_Center)
+         [
+            BrowseButtonAsButton
+//            .Text(LOCTEXT("ResetButtonLabel", "ResetToDefault"))
+//            .ToolTipText(LOCTEXT("ResetButtonToolTipText", "Resets Element to Default Value"))
+//            .Image(FEditorStyle::GetBrush("PropertyWindow.DiffersFromDefault"))
+         ]
+//         +SHorizontalBox::Slot()
+//         .AutoWidth()
+//         .VAlign(VAlign_Center)
+//         [
+//             PropertyCustomizationHelpers::MakeUseSelectedButton(FSimpleDelegate::CreateSP(this, &FPrimaryAssetIdCustomization::OnUseSelected))
+//         ]
+//         +SHorizontalBox::Slot()
+//         .AutoWidth()
+//         .VAlign(VAlign_Center)
+//         [
+//             PropertyCustomizationHelpers::MakeBrowseButton(FSimpleDelegate::CreateSP(this, &FPrimaryAssetIdCustomization::OnBrowseTo))
+//         ]
+//         +SHorizontalBox::Slot()
+//         .AutoWidth()
+//         .VAlign(VAlign_Center)
+//         [
+//             PropertyCustomizationHelpers::MakeClearButton(FSimpleDelegate::CreateSP(this, &FPrimaryAssetIdCustomization::OnClear))
+//         ]
         ];
     
     
     
-    CustomCategory.AddCustomRow(FText::FromString("Goto actor in level"))
+    /*CustomCategory.AddCustomRow(FText::FromString("Goto actor in level"))
         .ValueContent()
         .VAlign(VAlign_Center)
         .MaxDesiredWidth(250)
@@ -84,6 +146,19 @@ void FPlayerStartCustomization::CustomizeDetails(IDetailLayoutBuilder& DetailBui
                 .Font(IDetailLayoutBuilder::GetDetailFont())
             ]
         ];
+    
+    CustomCategory.AddCustomRow(FText::FromString("Goto actor in level button"))
+        .ValueContent()
+        .VAlign(VAlign_Center)
+        .MaxDesiredWidth(14)
+        [
+            BrowseButtonAsButton
+//            .Text(LOCTEXT("ResetButtonLabel", "ResetToDefault"))
+//            .ToolTipText(LOCTEXT("ResetButtonToolTipText", "Resets Element to Default Value"))
+//            .Image(FEditorStyle::GetBrush("PropertyWindow.DiffersFromDefault"))
+        ];*/
+//
+    
     
     if (GEngine)
     {
@@ -186,6 +261,36 @@ FReply FPlayerStartCustomization::ClickedOnButton()
         }
     }
     return FReply::Handled();
+}
+
+void FPlayerStartCustomization::ClickedOnButtonNG()
+{
+    if (GEditor)
+    {
+        if(UWorld* World = GEditor->GetEditorWorldContext().World())
+        {
+            TArray<AActor*> ActorsToFind;
+            UGameplayStatics::GetAllActorsOfClass(GEditor->GetEditorWorldContext().World(), APlayerStart::StaticClass(), ActorsToFind);
+            
+            for (AActor* PlayerStartActor: ActorsToFind)
+            {
+                APlayerStart* PlayerStartCast = Cast<APlayerStart>(PlayerStartActor);
+                if (PlayerStartCast)
+                {
+                    TSharedPtr<FString> PlayerStartSharedRef = MakeShared<FString>(FString(PlayerStartCast->GetActorLabel()));
+                    
+                    FString PlayerStartTagSetting;
+                    PlayerStartProperty->GetValue(PlayerStartTagSetting);
+                    
+                    if(PlayerStartTagSetting.Equals(FString(PlayerStartCast->GetActorLabel())))
+                    {
+                        GEditor->MoveViewportCamerasToActor(*PlayerStartCast, true);
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }
 
 void FPlayerStartCustomization::OnPlayerStartChanged(TSharedPtr<FString> NewValue, ESelectInfo::Type SelectInfo)

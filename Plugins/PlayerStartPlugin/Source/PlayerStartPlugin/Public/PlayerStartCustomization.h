@@ -44,6 +44,7 @@ public:
     void ComboBoxSetToWorldProperty(TSharedPtr<FString> SelPlayerStart);
     
     FReply ClickedOnButton();
+    void ClickedOnButtonNG();
     
     void ReloadPlayerStarts();
     
