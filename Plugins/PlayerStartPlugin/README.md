@@ -21,3 +21,8 @@ This module contains all the Editor customization needed for selecting and using
 8. Set the current/preferred PlayerStart in the WorldSettings in the Editor Outliner
 9. Start the Game and test the setup PlayerStart
 
+### Setup without removing Player Character from Map
+If you don't want to remove your Player Character (previous step #7) from the map you can setup the plugin with the following procedure:
+
+5. Create a child class (Blueprint) of PlayerStartGameModeBase and set this class as GameMode Override in the WorldSettings in your maps Editor Outliner.
+5a. Set your Player Character as Default Pawn Class in the Selected Game Mode Details > This way you can keep your Player Character on the map and use the functionality of the PlayerStartPlugin as well
