@@ -10,7 +10,6 @@
 
 #include "CoreMinimal.h"
 #include "IDetailCustomization.h"
-#include "Input/Reply.h"
 #include "GameFramework/Actor.h"
 #include "GameFramework/PlayerStart.h"
 #include "Kismet/GameplayStatics.h"
@@ -42,8 +41,6 @@ public:
     void OnDeleteActorsEnd();
     
     void ComboBoxSetToWorldProperty(TSharedPtr<FString> SelPlayerStart);
-    
-    FReply ClickedOnButton();
     void ClickedOnButtonNG();
     
     void ReloadPlayerStarts();

@@ -12,7 +12,7 @@
 
 void FPlayerStartPluginModule::StartupModule()
 {
-     UE_LOG(LogTemp, Log, TEXT("FPlayerStartPluginModule module has started!"));
+    UE_LOG(LogTemp, Log, TEXT("FPlayerStartPluginModule module has started!"));
     
     FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
     
