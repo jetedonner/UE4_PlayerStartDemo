@@ -15,6 +15,8 @@
 #include "Widgets/Input/SButton.h"
 #include "PropertyCustomizationHelpers.h"
 
+DEFINE_LOG_CATEGORY(DaVeLog);
+
 TSharedRef<IDetailCustomization> FPlayerStartCustomization::MakeInstance()
 {
     return MakeShareable(new FPlayerStartCustomization);
@@ -198,6 +200,6 @@ void FPlayerStartCustomization::OnPlayerStartChanged(TSharedPtr<FString> NewValu
     }
     else
     {
-        UE_LOG(LogTemp, Log, TEXT("PlayerStart Selected: EMPTY!!"));
+        UE_LOG(DaVeLog, Log, TEXT("PlayerStart Selected: EMPTY!!"));
     }
 }

@@ -38,17 +38,17 @@ AActor* APSGameModeBase::ChoosePlayerStart_Implementation(AController* Player)
             }
             else
             {
-                UE_LOG(LogTemp, Log, TEXT("APlayerStartGameModeBase::ChoosePlayerStart_Implenentation => PlayerStartWorldSettings IS NULL (Couldnt be casted)!"));
+                UE_LOG(DaVeLog, Log, TEXT("APlayerStartGameModeBase::ChoosePlayerStart_Implenentation => PlayerStartWorldSettings IS NULL (Couldnt be casted)!"));
             }
         }
         else
         {
-            UE_LOG(LogTemp, Log, TEXT("APlayerStartGameModeBase::ChoosePlayerStart_Implenentation => World IS NULL!"));
+            UE_LOG(DaVeLog, Log, TEXT("APlayerStartGameModeBase::ChoosePlayerStart_Implenentation => World IS NULL!"));
         }
     }
     else
     {
-        UE_LOG(LogTemp, Log, TEXT("APlayerStartGameModeBase::ChoosePlayerStart_Implenentation => Player IS NULL!"));
+        UE_LOG(DaVeLog, Log, TEXT("APlayerStartGameModeBase::ChoosePlayerStart_Implenentation => Player IS NULL!"));
     }
     return NULL;
 }

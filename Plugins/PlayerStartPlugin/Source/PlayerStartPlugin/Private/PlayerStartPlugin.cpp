@@ -12,7 +12,7 @@
 
 void FPlayerStartPluginModule::StartupModule()
 {
-    UE_LOG(LogTemp, Log, TEXT("FPlayerStartPluginModule module has started!"));
+    UE_LOG(DaVeLog, Log, TEXT("FPlayerStartPluginModule module has started!"));
     
     FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
     
@@ -23,7 +23,7 @@ void FPlayerStartPluginModule::StartupModule()
 
 void FPlayerStartPluginModule::ShutdownModule()
 {
-    UE_LOG(LogTemp, Log, TEXT("FPlayerStartPluginModule module has shutdown!"));
+    UE_LOG(DaVeLog, Log, TEXT("FPlayerStartPluginModule module has shutdown!"));
     
     if(FModuleManager::Get().IsModuleLoaded("PropertyEditor"))
     {

@@ -13,6 +13,8 @@
 #include "PSGameModeBase.h"
 #include "PSWorldSettingsBase.generated.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(DaVeLog, Log, All);
+
 UCLASS()
 class PSWORLDSETTINGS_API APSWorldSettingsBase : public AWorldSettings
 {

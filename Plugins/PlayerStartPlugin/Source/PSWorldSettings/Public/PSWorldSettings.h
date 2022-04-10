@@ -11,7 +11,6 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 #include "Engine/Engine.h"
-#include "GlobalDefinitions.h"
 
 class FPSWorldSettingsModule : public IModuleInterface
 {

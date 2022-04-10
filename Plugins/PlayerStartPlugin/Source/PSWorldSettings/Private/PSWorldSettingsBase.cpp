@@ -8,6 +8,8 @@
 
 #include "PSWorldSettingsBase.h"
 
+DEFINE_LOG_CATEGORY(DaVeLog);
+
 APSWorldSettingsBase::APSWorldSettingsBase():Super()
 {
     this->DefaultGameMode = APSGameModeBase::StaticClass();
