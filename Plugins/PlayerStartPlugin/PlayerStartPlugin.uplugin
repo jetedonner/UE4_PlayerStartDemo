@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
-	"Version": 1,
-	"VersionName": "1.0",
+	"Version": 5,
+	"VersionName": "1.0.5",
     "EngineVersion" : "4.27.0",
 	"FriendlyName": "PlayerStartPlugin",
 	"Description": "Easily setup, manage and activate PlayerStarts for your game via WorldSettings from within the Editor Outliner",

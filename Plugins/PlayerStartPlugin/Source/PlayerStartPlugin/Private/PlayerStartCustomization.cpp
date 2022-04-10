@@ -95,7 +95,10 @@ void FPlayerStartCustomization::OnNewActorsDropped(const TArray<UObject*>&, cons
     
     this->ReloadPlayerStarts();
     
-    this->ComboBoxSetToWorldProperty(SelPlayerStart);
+    if(SelPlayerStart.IsValid())
+    {
+        this->ComboBoxSetToWorldProperty(SelPlayerStart);
+    }
 }
 
 void FPlayerStartCustomization::OnDeleteActorsEnd()
@@ -104,7 +107,10 @@ void FPlayerStartCustomization::OnDeleteActorsEnd()
 
     this->ReloadPlayerStarts();
     
-    this->ComboBoxSetToWorldProperty(SelPlayerStart);
+    if(SelPlayerStart.IsValid())
+    {
+        this->ComboBoxSetToWorldProperty(SelPlayerStart);
+    }
 }
 
 void FPlayerStartCustomization::ComboBoxSetToWorldProperty(TSharedPtr<FString> SelPlayerStart)

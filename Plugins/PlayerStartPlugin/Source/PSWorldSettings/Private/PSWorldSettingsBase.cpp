@@ -10,7 +10,7 @@
 
 APSWorldSettingsBase::APSWorldSettingsBase():Super()
 {
-
+    this->DefaultGameMode = APSGameModeBase::StaticClass();
 }
 
 void APSWorldSettingsBase::BeginPlay()

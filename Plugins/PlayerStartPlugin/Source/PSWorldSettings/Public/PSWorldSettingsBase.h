@@ -10,6 +10,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/WorldSettings.h"
+#include "PSGameModeBase.h"
 #include "PSWorldSettingsBase.generated.h"
 
 UCLASS()
