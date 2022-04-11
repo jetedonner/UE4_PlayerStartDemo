@@ -7,6 +7,7 @@
 //
 
 #include "PSGameModeBase.h"
+#include "PSWorldSettingsBase.h"
 
 AActor* APSGameModeBase::ChoosePlayerStart_Implementation(AController* Player)
 {

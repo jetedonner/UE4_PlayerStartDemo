@@ -1,8 +1,8 @@
 {
 	"FileVersion": 3,
-	"Version": 6,
-	"VersionName": "1.0.6",
-    "EngineVersion" : "4.27.2",
+	"Version": 5,
+	"VersionName": "1.0.5",
+    "EngineVersion" : "4.27.0",
 	"FriendlyName": "PlayerStartPlugin",
 	"Description": "Easily setup, manage and activate PlayerStarts for your game via WorldSettings from within the Editor Outliner",
 	"Category": "Editor",
@@ -33,5 +33,11 @@
                 "Mac"
             ]
         }
-    ]
+    ],
+    "PostBuildSteps":
+    {
+        "Mac": [
+            "cp -R \"$(PluginDir)/Config\" \"/Volumes/Data/game/plugins/_BuildDir/PlayerStartPlugin/Config\""
+        ]
+    }
 }

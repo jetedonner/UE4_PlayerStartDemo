@@ -10,7 +10,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/WorldSettings.h"
-#include "PSGameModeBase.h"
 #include "PSWorldSettingsBase.generated.h"
 
 DECLARE_LOG_CATEGORY_EXTERN(DaVeLog, Log, All);

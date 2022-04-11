@@ -12,7 +12,6 @@
 #include "GameFramework/GameModeBase.h"
 #include "GameFramework/PlayerStart.h"
 #include "Kismet/GameplayStatics.h"
-#include "PSWorldSettingsBase.h"
 #include "PSGameModeBase.generated.h"
 
 /**

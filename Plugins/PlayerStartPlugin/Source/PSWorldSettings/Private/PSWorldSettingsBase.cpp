@@ -7,6 +7,7 @@
 //
 
 #include "PSWorldSettingsBase.h"
+#include "PSGameModeBase.h"
 
 DEFINE_LOG_CATEGORY(DaVeLog);
 

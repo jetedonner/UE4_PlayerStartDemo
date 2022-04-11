@@ -11,6 +11,8 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 #include "Engine/Engine.h"
+#include "PSGameModeBase.h"
+#include "PSWorldSettingsBase.h"
 
 class FPSWorldSettingsModule : public IModuleInterface
 {
