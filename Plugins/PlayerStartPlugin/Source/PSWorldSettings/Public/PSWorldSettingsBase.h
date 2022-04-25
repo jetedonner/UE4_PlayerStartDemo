@@ -21,6 +21,7 @@ class PSWORLDSETTINGS_API APSWorldSettingsBase : public AWorldSettings
     
 public:
     APSWorldSettingsBase();
+    APSWorldSettingsBase(const FObjectInitializer& ObjectInitializer);
     
 protected:
     virtual void BeginPlay() override;

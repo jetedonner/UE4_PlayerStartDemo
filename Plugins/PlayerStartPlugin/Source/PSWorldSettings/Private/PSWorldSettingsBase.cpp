@@ -16,6 +16,11 @@ APSWorldSettingsBase::APSWorldSettingsBase():Super()
     this->DefaultGameMode = APSGameModeBase::StaticClass();
 }
 
+APSWorldSettingsBase::APSWorldSettingsBase(const FObjectInitializer& ObjectInitializer):Super(ObjectInitializer)
+{
+    this->DefaultGameMode = APSGameModeBase::StaticClass();
+}
+
 void APSWorldSettingsBase::BeginPlay()
 {
     Super::BeginPlay();

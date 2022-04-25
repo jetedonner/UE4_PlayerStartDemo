@@ -2,42 +2,42 @@
 	"FileVersion": 3,
 	"Version": 5,
 	"VersionName": "1.0.5",
-    "EngineVersion" : "4.27.0",
+	"EngineVersion": "4.27",
 	"FriendlyName": "PlayerStartPlugin",
 	"Description": "Easily setup, manage and activate PlayerStarts for your game via WorldSettings from within the Editor Outliner",
 	"Category": "Editor",
 	"CreatedBy": "Kim David Hauser",
 	"CreatedByURL": "http://kimhauser.ch",
-	"DocsURL": "http://kimhauser.ch/index.php/ue4/ue4-playerstartplugin",
+	"DocsURL": "http://kimhauser.ch/index.php/projects/unreal-engine/ue-playerstartplugin",
 	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/ad230cf1db1b4d99bb211bcda2667c9b",
-	"SupportURL": "http://kimhauser.ch/index.php/ue4/ue4-playerstartplugin",
-    "EnabledByDefault" : true,
+	"SupportURL": "http://kimhauser.ch/index.php/projects/unreal-engine/ue-playerstartplugin",
+	"EnabledByDefault": true,
 	"CanContainContent": false,
 	"IsBetaVersion": false,
 	"IsExperimentalVersion": false,
 	"Installed": false,
-    "Modules": [
-        {
-            "Name": "PlayerStartPlugin",
-            "Type": "Editor",
-            "LoadingPhase": "PostEngineInit",
-            "WhitelistPlatforms" : [
-                "Mac"
-            ]
-        },
-        {
-            "Name": "PSWorldSettings",
-            "Type": "Editor",
-            "LoadingPhase": "Default",
-            "WhitelistPlatforms" : [
-                "Mac"
-            ]
-        }
-    ],
-    "PostBuildSteps":
-    {
-        "Mac": [
-            "cp -R \"$(PluginDir)/Config\" \"/Volumes/Data/game/plugins/_BuildDir/PlayerStartPlugin/Config\""
-        ]
-    }
+	"Modules": [
+		{
+			"Name": "PlayerStartPlugin",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit",
+			"WhitelistPlatforms": [
+				"Mac"
+			]
+		},
+		{
+			"Name": "PSWorldSettings",
+			"Type": "Editor",
+			"LoadingPhase": "Default",
+			"WhitelistPlatforms": [
+				"Mac"
+			]
+		}
+	],
+	"PostBuildSteps":
+	{
+		"Mac": [
+			"cp -R \"$(PluginDir)/Config\" \"/Volumes/Data/game/plugins/_BuildDir/PlayerStartPlugin/Config\""
+		]
+	}
 }

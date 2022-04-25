@@ -156,6 +156,7 @@ void FPlayerStartCustomization::ReloadPlayerStarts()
             }
         }
     }
+    
     if(PlayerStartComboBox)
     {
         PlayerStartComboBox->RefreshOptions();
