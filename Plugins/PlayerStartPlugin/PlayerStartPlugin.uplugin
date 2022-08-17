@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
-	"Version": 5,
-	"VersionName": "1.0.5",
+	"Version": 6,
+	"VersionName": "1.0.6",
 	"EngineVersion": "4.27",
 	"FriendlyName": "PlayerStartPlugin",
 	"Description": "Easily setup, manage and activate PlayerStarts for your game via WorldSettings from within the Editor Outliner",
@@ -12,7 +12,7 @@
 	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/ad230cf1db1b4d99bb211bcda2667c9b",
 	"SupportURL": "http://kimhauser.ch/index.php/projects/unreal-engine/ue-playerstartplugin",
 	"EnabledByDefault": true,
-	"CanContainContent": false,
+	"CanContainContent": true,
 	"IsBetaVersion": false,
 	"IsExperimentalVersion": false,
 	"Installed": false,
@@ -22,7 +22,7 @@
 			"Type": "Editor",
 			"LoadingPhase": "PostEngineInit",
 			"WhitelistPlatforms": [
-				"Mac"
+				"Mac", "Win64", "Linux"
 			]
 		},
 		{
@@ -30,14 +30,8 @@
 			"Type": "Editor",
 			"LoadingPhase": "Default",
 			"WhitelistPlatforms": [
-				"Mac"
+				"Mac", "Win64", "Linux"
 			]
 		}
-	],
-	"PostBuildSteps":
-	{
-		"Mac": [
-			"cp -R \"$(PluginDir)/Config\" \"/Volumes/Data/game/plugins/_BuildDir/PlayerStartPlugin/Config\""
-		]
-	}
+	]
 }

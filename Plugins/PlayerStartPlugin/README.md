@@ -26,3 +26,10 @@ If you don't want to remove your Player Character (previous step #7) from the ma
 
 5. Create a child class (Blueprint) of PlayerStartGameModeBase and set this class as GameMode Override in the WorldSettings in your maps Editor Outliner.
 5a. Set your Player Character as Default Pawn Class in the Selected Game Mode Details > This way you can keep your Player Character on the map and use the functionality of the PlayerStartPlugin as well
+
+## Version History
+### 1.0.6 (6) - 17.08.2022
+- Bugfix to avoid crashing when adding PlayerStarts after switching levels. Added PendingDelete(). Thanks to "scheltopusik" for reporting this bug
+
+### 1.0.5 (5) - 08.05.2022
+- Initial released version

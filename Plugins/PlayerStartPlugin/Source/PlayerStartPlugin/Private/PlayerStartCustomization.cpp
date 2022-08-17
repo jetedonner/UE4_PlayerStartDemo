@@ -86,8 +86,8 @@ void FPlayerStartCustomization::CustomizeDetails(IDetailLayoutBuilder& DetailBui
     
     if (GEngine)
     {
-        FDelegateHandle Handle = FEditorDelegates::OnNewActorsDropped.AddRaw(this, &FPlayerStartCustomization::OnNewActorsDropped);
-        FDelegateHandle Handle2 = FEditorDelegates::OnDeleteActorsEnd.AddRaw(this, &FPlayerStartCustomization::OnDeleteActorsEnd);
+        OnNewActorsDroppedHandle = FEditorDelegates::OnNewActorsDropped.AddRaw(this, &FPlayerStartCustomization::OnNewActorsDropped);
+        OnDeleteActorsEndHandle = FEditorDelegates::OnDeleteActorsEnd.AddRaw(this, &FPlayerStartCustomization::OnDeleteActorsEnd);
     }
 }
 
@@ -202,5 +202,24 @@ void FPlayerStartCustomization::OnPlayerStartChanged(TSharedPtr<FString> NewValu
     else
     {
         UE_LOG(DaVeLog, Log, TEXT("PlayerStart Selected: EMPTY!!"));
+    }
+}
+
+void FPlayerStartCustomization::PendingDelete()
+{
+    if (GEngine)
+    {
+        // handles below saved from AddRaw calls
+        if (OnNewActorsDroppedHandle.IsValid())
+        {
+            FEditorDelegates::OnNewActorsDropped.Remove(OnNewActorsDroppedHandle);
+            OnNewActorsDroppedHandle.Reset();
+        }
+
+        if (OnDeleteActorsEndHandle.IsValid())
+        {
+            FEditorDelegates::OnDeleteActorsEnd.Remove(OnDeleteActorsEndHandle);
+            OnDeleteActorsEndHandle.Reset();
+        }
     }
 }

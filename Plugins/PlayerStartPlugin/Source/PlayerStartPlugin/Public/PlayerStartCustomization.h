@@ -30,10 +30,14 @@ public:
     TSharedPtr<IPropertyHandle> PlayerStartProperty;
     TSharedPtr<STextComboBox> PlayerStartComboBox;
     
+    FDelegateHandle OnNewActorsDroppedHandle;
+    FDelegateHandle OnDeleteActorsEndHandle;
+    
     static TSharedRef<IDetailCustomization> MakeInstance();
     
     // IDetailCustomization interface
     virtual void CustomizeDetails(IDetailLayoutBuilder& DetailBuilder) override;
+    virtual void PendingDelete() override;
     
     void OnPlayerStartChanged(TSharedPtr<FString> NewValue, ESelectInfo::Type SelectInfo);
     
@@ -44,5 +48,4 @@ public:
     void ClickedOnButtonNG();
     
     void ReloadPlayerStarts();
-    
 };
